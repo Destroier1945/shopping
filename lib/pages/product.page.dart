@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
 class ProductPage extends StatelessWidget {
-  const ProductPage({Key? key}) : super(key: key);
+
+  final String image;
+  final String title;
+  final String description;
+  final double price;
+
+  const ProductPage({Key? key,required this.image,required this.title,required this.description, required this.price}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,15 +23,45 @@ class ProductPage extends StatelessWidget {
               pinned: true,
               flexibleSpace: FlexibleSpaceBar(
                 centerTitle: true,
-                background: Image.asset('assets/product-10.png',
+                background: Image.asset(image,
                 width: double.infinity,
                 fit: BoxFit.fitWidth,),
               ),
             ),
           ];
         },
-        body: Container(),
-      )
+        body: ListView(
+        children: [
+          Padding(padding: EdgeInsets.only(
+            top: 10,
+            left: 10,
+            right: 10,
+          ),
+            child: Text(title,
+            style: TextStyle(
+              fontSize: 26,
+              fontWeight: FontWeight.bold,
+            ),
+            ),
+          ),
+          Padding(padding: EdgeInsets.all(10),
+          child: Text(description,)
+            ,),
+          Padding(padding: EdgeInsets.all(10),
+          child: Text(
+            'Details',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          ),
+          Padding(padding: EdgeInsets.all(10),
+          child: Text(
+            'Eleve o nível do seu treino diário com a camiseta Nike Dri-FIT Academy. O tecido macio e elástico remove o suor da pele, enquanto os painéis de tela mantêm o frescor para que você se concentre em dar o seu melhor no jogo. Este produto é feito com fibras de poliéster reciclado.',
+          ),)
+        ],
+        ),
+      ),
     );
   }
 }
